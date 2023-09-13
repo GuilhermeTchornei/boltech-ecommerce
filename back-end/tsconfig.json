@@ -9,7 +9,16 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "rootDirs": ["src", "test"],
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      }
+    ],
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
