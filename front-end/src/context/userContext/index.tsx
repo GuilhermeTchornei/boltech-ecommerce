@@ -1,6 +1,6 @@
 "use client"
 import { ScriptProps } from "next/script";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { IUser } from "./user.interface";
 
 
@@ -14,11 +14,11 @@ const UserContext = createContext<UserContextInterface | undefined>(undefined);
 export function UserProvider({ children }: ScriptProps) {
     const [user, setUser] = useState<IUser>();
 
-    if (!user) {
-        const token = localStorage.getItem('token');
-        const userName = localStorage.getItem('userName');
-        if (token && userName) setUser({ token, userName });
-    }
+        if (!user && typeof window !== 'undefined') {
+            const token = localStorage.getItem('token');
+            const userName = localStorage.getItem('userName');
+            if (token && userName) setUser({ token, userName });
+        }
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
