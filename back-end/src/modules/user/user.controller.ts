@@ -8,6 +8,11 @@ import IUserReq from "../auth/interface/userRequest.interface";
 export class UserController {
     constructor(private readonly userService: UserService) { }
 
+    @Get()
+    hello() {
+        return "hello";
+    }
+
     @UseGuards(AuthGuard)
     @Get('users')
     async findOne(@Request() { userId }: IUserReq) {

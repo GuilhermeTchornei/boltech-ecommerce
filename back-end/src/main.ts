@@ -14,11 +14,7 @@ async function bootstrap() {
   );
   const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT');
-  app.enableCors({
-    origin: "boltech-ecommerce.vercel.app",
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-  });
+  app.enableCors();
   await app.listen(port, () => console.log(`Running in port ${port}`));
 }
 bootstrap();
