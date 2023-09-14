@@ -14,4 +14,8 @@ export class UserService{
         user.password = hash;
         await this.userRepository.create(user);
     }
+
+    async findOne(userId: number) {
+        return await this.userRepository.findFirst({id: userId});
+    }
 }
