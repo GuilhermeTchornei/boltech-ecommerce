@@ -20,8 +20,8 @@ async function get<ResType>(url: string): Promise<ResType> {
 async function post<ReqType, ResType>(url: string, payload: ReqType | null = null): Promise<ResType> {
     try {
         const header = UseHeader();
-    const response = await api.post<ResType>(url, payload, header);
-    return response.data;
+        const response = await api.post<ResType>(url, payload);
+        return response.data;
     }
     catch (err: any) {
         throw err;
